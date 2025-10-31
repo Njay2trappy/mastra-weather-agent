@@ -3,10 +3,12 @@ import { PinoLogger } from "@mastra/loggers";
 import { LibSQLStore } from "@mastra/libsql";
 import { weatherAgent } from "../agents/weather-agent";
 import { linkShortenerAgent } from "../agents/linkshortener-agent";
+import { translatorAgent } from "../agents/translator-agent";
+import { codewiseAgent } from "../agents/codewise-agent";
 import { a2aAgentRoute } from "../routes/a2a-agent-route";
 
 export const mastra = new Mastra({
-  agents: { weatherAgent, linkShortenerAgent },
+  agents: { weatherAgent, linkShortenerAgent, translatorAgent, codewiseAgent },
   storage: new LibSQLStore({ url: "file:./mastra.db" }),
   logger: new PinoLogger({ name: "Mastra", level: "debug" }),
   observability: { default: { enabled: true } },
